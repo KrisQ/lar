@@ -26,9 +26,7 @@ Route::get('post/{id}', 'PostsController@show_post');
 //   return '<a href="'.route('admin.home').'">Yooo</a>';
 // });
 //
-// Route::get('/contact', function(){
-//   return "<p>contact page</p>";
-// });
+Route::get('/contact', 'PostsController@contact');
 //
 // Route::get('/post/{id}/{name}', function($id, $name){
 //   return "<h1>Post #$id</h1> $name";

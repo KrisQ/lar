@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-<div>
+@extends('layouts.app')
 
+@section('content')
 <h1>Contact Page</h1>
 
-</div>
-</body>
-</html>
+@if(count($people))
+  @foreach($people as $person)
+    <ul>
+      <li>{{$person}}</li>
+    </ul>
+  @endforeach
+@endif
+
+@stop
+
+@section('footer')
+<script type="text/javascript">
+  // alert('Hello visitor')
+</script>
+@stop
