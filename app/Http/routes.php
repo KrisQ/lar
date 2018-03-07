@@ -68,12 +68,12 @@ use App\Post;
 //   $post->save();
 // });
 
-Route::get('/create', function(){
-  Post::create([
-    'title'=>'php array',
-    'content'=>'I am learning a lot'
-  ]);
-});
+// Route::get('/create', function(){
+//   Post::create([
+//     'title'=>'New post',
+//     'content'=>'Alright, so far so good'
+//   ]);
+// });
 
 // Route::get('/update', function(){
 //   Post::where('id', 2)->where('is_admin', 0)->update([
@@ -97,9 +97,9 @@ Route::get('/create', function(){
 //   post::withTrashed()->where('is_admin', 0)->restore();
 // });
 
-Route::get('/force', function(){
-  Post::withTrashed()->where('is_admin', 0)->forceDelete();
-});
+// Route::get('/force', function(){
+//   Post::withTrashed()->where('is_admin', 0)->forceDelete();
+// });
 
 
 
