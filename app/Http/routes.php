@@ -1,6 +1,11 @@
 <?php
 
 use App\Post;
+use App\User;
+use App\Country;
+use App\{Photo};
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +36,76 @@ use App\Post;
 //   return $deleted;
 // });
 
+/*
+|--------------------------------------------------------------------------
+| Eloquent relationships
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+
+//One to One relationships
+// Route::get('/user/{id}/post/', function($id){
+//   $post = User::find($id)->post;
+//   return $post;
+// });
+
+// Route::get('/post/{id}/user', function($id){
+//   $user = Post::find($id)->user->password;
+//   return $user;
+// });
+
+//One to many relationships
+// Route::get('/posts', function(){
+//   $user = User::find(1);
+//   foreach ($user->posts as $post) {
+//     echo $post->title . "<br>";
+//   }
+// });
+
+//Many to Many
+// Route::get('user/{id}/role', function($id){
+//   $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+//   return $user;
+// });
+
+//Access pivot table
+// Route::get('user/pivot', function(){
+//   $user = User::find(1);
+//   foreach ($user->roles as $role) {
+//     echo $role->pivot->role_id;
+//   }
+// });
+
+// Route::get('user/{id}/country', function($id){
+//   $country = Country::find($id);
+//   foreach ($country->posts as $post) {
+//     return $post->title;
+//   }
+// });
+
+//Polymorphic relationships
+Route::get('user/{id}', function($id){
+  $user = User::find($id);
+  foreach ($user->photos as $photo) {
+    return $photo;
+  }
+});
+
+// Route::get('post/{id}', function($id){
+//   $user = Post::find($id);
+//   foreach ($user->photos as $photo) {
+//     echo $photo;
+//   }
+// });
+
+Route::get('/photo/{id}/post', function($id){
+  $photo = Photo::findOrFail($id);
+  return $photo->imageable;
+});
 
 /*
 |--------------------------------------------------------------------------
